@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_app/core/Colors/Colors.dart';
+
 import 'package:netflix_app/presentation/main_page/widgets/bottom_nav.dart';
 
 import '../downloads/screen_downlods.dart';
@@ -13,10 +13,10 @@ class MainPage extends StatelessWidget {
 
   //! List of pages
   final _pages = [
-    ScreenHome(),
-    ScreenNewAndHot(),
-    ScreenFastLaugh(),
-    ScreenSearch(),
+    const ScreenHome(),
+    const ScreenNewAndHot(),
+    const ScreenFastLaugh(),
+    const ScreenSearch(),
     ScreenDownloads()
   ];
 

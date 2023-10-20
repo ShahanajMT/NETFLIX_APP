@@ -4,7 +4,7 @@ import 'package:netflix_app/presentation/downloads/widgets/download_image_widget
 
 import '../../../core/Colors/Colors.dart';
 import '../../../core/constant/constant.dart';
-import '../screen_downlods.dart';
+
 
 class Section2 extends StatelessWidget {
   Section2({super.key});

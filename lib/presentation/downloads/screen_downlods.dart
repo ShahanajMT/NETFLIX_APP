@@ -1,9 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:math';
+
 
 import 'package:flutter/material.dart';
-import 'package:netflix_app/core/Colors/Colors.dart';
-import 'package:netflix_app/core/constant/constant.dart';
+
 import 'package:netflix_app/presentation/common_widgets/app_bar_widgets.dart';
 
 import 'widgets/section_1.dart';
