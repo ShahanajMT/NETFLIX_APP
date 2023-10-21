@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix_app/core/constant/constant.dart';
-import 'package:netflix_app/presentation/search/widgets/search_idle_widget.dart';
+
 import 'package:netflix_app/presentation/search/widgets/search_result.dart';
 
 
