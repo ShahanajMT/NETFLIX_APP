@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 
 import 'package:netflix_app/core/constant/constant.dart';
 
+
+
 import 'widgets/main_title_card_widget.dart';
 
+import 'widgets/number_tile_card.dart';
+
 const imageUrl =
-    "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/uQxjZGU6rxSPSMeAJPJQlmfV3ys.jpg";
+    "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/b0Ej6fnXAP8fK75hlyi2jKqdhHz.jpg";
 
 class ScreenHome extends StatelessWidget {
   const ScreenHome({super.key});
@@ -21,13 +25,32 @@ class ScreenHome extends StatelessWidget {
           margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
           child: ListView(
             children: [
-              MainTitleCard(title: 'Released in the past year',screenHeight: screenHeight, screenWidth: screenWidth,),
+              MainTitleCard(
+                title: 'Released in the past year',
+                screenHeight: screenHeight,
+                screenWidth: screenWidth,
+              ),
               kHeight,
-              MainTitleCard( title: 'Trending Now',screenHeight: screenHeight, screenWidth: screenWidth,),
+              MainTitleCard(
+                title: 'Trending Now',
+                screenHeight: screenHeight,
+                screenWidth: screenWidth,
+              ),
               kHeight,
-              MainTitleCard(title: 'Tense Dramas', screenHeight: screenHeight, screenWidth: screenWidth),
+              //! NUMBER CARD
+              NumberTitleCard(screenHeight: screenHeight, screenWidth: screenWidth),
               kHeight,
-              MainTitleCard(title: 'South Indian Cinemas', screenHeight: screenHeight, screenWidth: screenWidth)
+
+              //! END
+              MainTitleCard(
+                  title: 'Tense Dramas',
+                  screenHeight: screenHeight,
+                  screenWidth: screenWidth),
+              kHeight,
+              MainTitleCard(
+                  title: 'South Indian Cinemas',
+                  screenHeight: screenHeight,
+                  screenWidth: screenWidth)
             ],
           ),
         ),
