@@ -6,6 +6,8 @@ import '../../../core/Colors/Colors.dart';
 import '../../../core/constant/constant.dart';
 
 
+
+
 class BackgroudCard extends StatelessWidget {
   const BackgroudCard({
     super.key,
@@ -21,7 +23,7 @@ class BackgroudCard extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          height: screenHeight * 0.73,
+          height: screenHeight * 0.87,
           width: screenWidth * 1,
           //color: Colors.yellow,
           decoration: const BoxDecoration(
