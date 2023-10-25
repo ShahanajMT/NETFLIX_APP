@@ -10,6 +10,7 @@ const kHeight20 = Gap(20);
 
 //! BorderRadius
 final BorderRadius kRadius8 = BorderRadius.circular(8);
+final BorderRadius kRadius30 = BorderRadius.circular(30);
 
 
 //! BG IMAGE
