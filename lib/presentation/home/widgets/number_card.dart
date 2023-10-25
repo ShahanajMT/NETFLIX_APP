@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix_app/core/Colors/Colors.dart';
 
 import '../../../core/constant/constant.dart';
 import '../screen_home.dart';
@@ -24,7 +26,7 @@ class NumberCard extends StatelessWidget {
           children: [
             SizedBox(
               height: screenHeight * 0.29,
-              width: screenWidth * 0.12 ,
+              width: screenWidth * 0.12,
             ),
             Container(
               height: screenHeight * 0.29,
@@ -42,12 +44,19 @@ class NumberCard extends StatelessWidget {
         ),
         Positioned(
           left: 12,
-          bottom: 0,
+          bottom: -30,
           child: BorderedText(
-            strokeWidth: 8,
+            strokeWidth: 5,
+            strokeColor: Colors.grey.withOpacity(1),
             child: Text(
               "${index + 1}",
-              style: const TextStyle(fontSize: 140, decoration: TextDecoration.none, decorationColor: Colors.red),
+              style: GoogleFonts.montserrat(
+                fontSize: 150,
+                fontWeight: FontWeight.bold,
+                color: kBlackColor,
+                decoration: TextDecoration.none,
+                decorationColor: kBlackColor,
+              ),
             ),
           ),
         ),

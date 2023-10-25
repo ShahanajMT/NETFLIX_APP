@@ -1,12 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
+
+
 import 'package:netflix_app/core/constant/constant.dart';
 
-
-
+import 'widgets/backgroud_card.dart';
 import 'widgets/main_title_card_widget.dart';
-
 import 'widgets/number_tile_card.dart';
 
 const imageUrl =
@@ -25,6 +25,11 @@ class ScreenHome extends StatelessWidget {
           margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
           child: ListView(
             children: [
+              BackgroudCard(
+                screenHeight: screenHeight,
+                screenWidth: screenWidth,
+              ),
+              kHeight,
               MainTitleCard(
                 title: 'Released in the past year',
                 screenHeight: screenHeight,
@@ -38,19 +43,24 @@ class ScreenHome extends StatelessWidget {
               ),
               kHeight,
               //! NUMBER CARD
-              NumberTitleCard(screenHeight: screenHeight, screenWidth: screenWidth),
+              NumberTitleCard(
+                screenHeight: screenHeight,
+                screenWidth: screenWidth,
+              ),
               kHeight,
 
               //! END
               MainTitleCard(
-                  title: 'Tense Dramas',
-                  screenHeight: screenHeight,
-                  screenWidth: screenWidth),
+                title: 'Tense Dramas',
+                screenHeight: screenHeight,
+                screenWidth: screenWidth,
+              ),
               kHeight,
               MainTitleCard(
-                  title: 'South Indian Cinemas',
-                  screenHeight: screenHeight,
-                  screenWidth: screenWidth)
+                title: 'South Indian Cinemas',
+                screenHeight: screenHeight,
+                screenWidth: screenWidth,
+              )
             ],
           ),
         ),
@@ -58,5 +68,9 @@ class ScreenHome extends StatelessWidget {
     );
   }
 }
+
+
+
+
 
 
