@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:netflix_app/core/Colors/Colors.dart';
-import 'package:netflix_app/presentation/common_widgets/app_bar_widgets.dart';
 
 import '../../core/constant/constant.dart';
+import 'widgets/comingSoonWidget.dart';
 
 class ScreenNewAndHot extends StatelessWidget {
   const ScreenNewAndHot({super.key});
@@ -13,17 +14,19 @@ class ScreenNewAndHot extends StatelessWidget {
       length: 2,
       child: SafeArea(
         child: Container(
+          //color: Colors.yellow,
           margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
           child: Scaffold(
             appBar: PreferredSize(
-              preferredSize: const Size.fromHeight(100),
+              preferredSize: const Size.fromHeight(93),
               child: AppBar(
                 title: const Text(
                   'New & Hot',
                   style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w900,
-                      color: kWhiteColor),
+                    fontSize: 30,
+                    fontWeight: FontWeight.w900,
+                    color: kWhiteColor,
+                  ),
                 ),
                 actions: [
                   const Icon(
@@ -46,7 +49,6 @@ class ScreenNewAndHot extends StatelessWidget {
                   ),
                 ],
                 bottom: TabBar(
-                  //dividerColor: Colors.transparent,
                   indicatorPadding:
                       const EdgeInsets.symmetric(horizontal: -28, vertical: 5),
                   padding: const EdgeInsets.only(bottom: 10, top: 7),
@@ -56,7 +58,9 @@ class ScreenNewAndHot extends StatelessWidget {
                   labelStyle: const TextStyle(
                       fontSize: 16, fontWeight: FontWeight.bold),
                   indicator: BoxDecoration(
-                      color: kWhiteColor, borderRadius: kRadius30),
+                    color: kWhiteColor,
+                    borderRadius: kRadius30,
+                  ),
                   tabs: const [
                     Tab(
                       text: '🍿 Coming Soon',
@@ -70,9 +74,10 @@ class ScreenNewAndHot extends StatelessWidget {
             ),
             body: SafeArea(
               child: TabBarView(
+                clipBehavior: Clip.hardEdge,
                 children: [
-                  _buildTabBarView('Coming Soon'),
-                  _buildTabBarView('Everyones Watching'),
+                  _buildComingSoon(),
+                  _buildEveryoncesWatching(),
                 ],
               ),
             ),
@@ -82,9 +87,15 @@ class ScreenNewAndHot extends StatelessWidget {
     );
   }
 
+  Widget _buildComingSoon() {
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: 10,
+      itemBuilder: (BuildContext context, index) => const ComingSoonWidget(),
+    );
+  }
 
-}
-
-_buildTabBarView(name) {
-  return Center(child: Text('$name'),);
+  Widget _buildEveryoncesWatching() {
+    return const SizedBox();
+  }
 }
