@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../../core/Colors/Colors.dart';
 import '../../../core/constant/constant.dart';
 import '../../home/widgets/custom_icon.dart';
+import 'videoWidget.dart';
 
 class ComingSoonWidget extends StatelessWidget {
   const ComingSoonWidget({
     super.key,
   });
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Row(
       children: [
+        //! For Date
         SizedBox(
           // width: size.width * 0.132,
           // height: size.height * 0.6,
@@ -42,6 +42,7 @@ class ComingSoonWidget extends StatelessWidget {
             ],
           ),
         ),
+        //! For Details of Film
         SizedBox(
           // width: size.width * 0.84,
           // height: size.height * 0.6,
@@ -50,34 +51,8 @@ class ComingSoonWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Stack(
-                children: [
-                  SizedBox(
-                    height: size.height * 0.25,
-                    width: size.width * 1,
-                    child: Image.network(
-                      newandHotTempImage,
-                      fit: BoxFit.cover,
-                    ),
-                    //color: Colors.yellow,
-                  ),
-                  Positioned(
-                    bottom: 10,
-                    right: 10,
-                    child: CircleAvatar(
-                      backgroundColor: kBlackColor.withOpacity(0.5),
-                      radius: 25,
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.volume_off,
-                          color: kWhiteColor,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              //! For Posters
+              const VideoWidget(),
               //! TitleText
               Row(
                 children: [
@@ -87,7 +62,7 @@ class ComingSoonWidget extends StatelessWidget {
                         fontSize: 35, fontWeight: FontWeight.bold),
                   ),
                   const Spacer(),
-                   const Row(
+                  const Row(
                     children: [
                       CustomIcon(
                         title: "Remind Me",
@@ -127,3 +102,6 @@ class ComingSoonWidget extends StatelessWidget {
     );
   }
 }
+
+
+

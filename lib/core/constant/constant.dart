@@ -5,7 +5,7 @@ import 'package:gap/gap.dart';
 const kWidth = Gap(10);
 const kHeight = Gap(10);
 const kHeight20 = Gap(20);
-
+const kHeight50 = Gap(50);
 //const kGap = SizedBox(width: 10,);
 
 //! BorderRadius
@@ -18,6 +18,7 @@ const kImage =
 
 
     const newandHotTempImage = "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/S3EIcOUQYxgd3QzjOo2rZJ2MN8.jpg";
+     const newandHotTempImage2 = "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/2X5nnvkWvYRFmTspXY7lsJqDzog.jpg";
 
 const TextStyle kHomeTextStyle =
     TextStyle(fontSize: 16, fontWeight: FontWeight.bold);

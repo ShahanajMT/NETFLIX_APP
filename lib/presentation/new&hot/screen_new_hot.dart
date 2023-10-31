@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
-
 import 'package:netflix_app/core/Colors/Colors.dart';
-
 import '../../core/constant/constant.dart';
 import 'widgets/comingSoonWidget.dart';
+import 'widgets/everyonesWatching.dart';
 
 class ScreenNewAndHot extends StatelessWidget {
   const ScreenNewAndHot({super.key});
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
       child: SafeArea(
         child: Container(
-          //color: Colors.yellow,
           margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
           child: Scaffold(
             appBar: PreferredSize(
@@ -49,8 +46,9 @@ class ScreenNewAndHot extends StatelessWidget {
                   ),
                 ],
                 bottom: TabBar(
+                  indicatorColor: Colors.transparent,
                   indicatorPadding:
-                      const EdgeInsets.symmetric(horizontal: -28, vertical: 5),
+                      const EdgeInsets.symmetric(horizontal: -15, vertical: 7),
                   padding: const EdgeInsets.only(bottom: 10, top: 7),
                   isScrollable: true,
                   labelColor: kBlackColor,
@@ -58,9 +56,7 @@ class ScreenNewAndHot extends StatelessWidget {
                   labelStyle: const TextStyle(
                       fontSize: 16, fontWeight: FontWeight.bold),
                   indicator: BoxDecoration(
-                    color: kWhiteColor,
-                    borderRadius: kRadius30,
-                  ),
+                      color: kWhiteColor, borderRadius: kRadius30),
                   tabs: const [
                     Tab(
                       text: '🍿 Coming Soon',
@@ -74,7 +70,6 @@ class ScreenNewAndHot extends StatelessWidget {
             ),
             body: SafeArea(
               child: TabBarView(
-                clipBehavior: Clip.hardEdge,
                 children: [
                   _buildComingSoon(),
                   _buildEveryoncesWatching(),
@@ -87,6 +82,7 @@ class ScreenNewAndHot extends StatelessWidget {
     );
   }
 
+  //!TABBAR VIEWS
   Widget _buildComingSoon() {
     return ListView.builder(
       shrinkWrap: true,
@@ -96,6 +92,11 @@ class ScreenNewAndHot extends StatelessWidget {
   }
 
   Widget _buildEveryoncesWatching() {
-    return const SizedBox();
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: 10,
+      itemBuilder: (BuildContext context, index) =>
+          const EveryonesWatchingWidget(),
+    );
   }
 }
