@@ -4,6 +4,8 @@ import '../../core/constant/constant.dart';
 import 'widgets/comingSoonWidget.dart';
 import 'widgets/everyonesWatching.dart';
 
+
+
 class ScreenNewAndHot extends StatelessWidget {
   const ScreenNewAndHot({super.key});
   @override
