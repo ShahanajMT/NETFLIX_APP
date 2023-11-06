@@ -24,3 +24,6 @@ const TextStyle kHomeTextStyle =
     TextStyle(fontSize: 16, fontWeight: FontWeight.bold);
 
 
+const imageAppendUrl = 'https://www.themoviedb.org/t/p/w500';    
+
+
