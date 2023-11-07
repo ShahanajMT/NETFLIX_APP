@@ -29,6 +29,3 @@ class MianHomeCard extends StatelessWidget {
     );
   }
 }
-
-
-

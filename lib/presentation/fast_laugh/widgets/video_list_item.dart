@@ -5,14 +5,11 @@ import '../../../core/Colors/Colors.dart';
 import '../screen_fast_laugh.dart';
 
 class VideoListItem extends StatelessWidget {
-  
   final int index;
   const VideoListItem({
     Key? key,
     required this.index,
   }) : super(key: key);
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -43,11 +40,13 @@ class VideoListItem extends StatelessWidget {
                 ),
 
                 //! RIGHT SIDE
-                  const Column(
+                const Column(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children:  [
+                  children: [
                     Padding(
-                      padding:  EdgeInsets.symmetric(vertical: 10, ),
+                      padding: EdgeInsets.symmetric(
+                        vertical: 10,
+                      ),
                       child: CircleAvatar(
                         backgroundImage: NetworkImage(imageUrl),
                         radius: 30,
@@ -58,7 +57,6 @@ class VideoListItem extends StatelessWidget {
                     VideoActionWidget(icon: Icons.share, title: 'Share'),
                     VideoActionWidget(icon: Icons.play_arrow, title: 'Play'),
                   ],
-
                 ),
               ],
             ),

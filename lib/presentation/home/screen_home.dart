@@ -101,7 +101,7 @@ class ScreenHome extends StatelessWidget {
                     // ) : kHeight,
                     scrollNotifier.value == true
                         ? AnimatedContainer(
-                          duration: const Duration(milliseconds: 800),
+                            duration: const Duration(milliseconds: 800),
                             color: Colors.black.withOpacity(0.3),
                             height: screenHeight * 0.12,
                             width: screenWidth * 1,
@@ -133,16 +133,25 @@ class ScreenHome extends StatelessWidget {
                                         ),
                                         //color: Colors.red,
                                       ),
-
                                     ),
                                   ],
                                 ),
                                 const Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Text('Tv Shows', style: kHomeTextStyle,),
-                                    Text('Movies', style: kHomeTextStyle,),
-                                    Text('Categories',style: kHomeTextStyle,)
+                                    Text(
+                                      'Tv Shows',
+                                      style: kHomeTextStyle,
+                                    ),
+                                    Text(
+                                      'Movies',
+                                      style: kHomeTextStyle,
+                                    ),
+                                    Text(
+                                      'Categories',
+                                      style: kHomeTextStyle,
+                                    )
                                   ],
                                 ),
                               ],

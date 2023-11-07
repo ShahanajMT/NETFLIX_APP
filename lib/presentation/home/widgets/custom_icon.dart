@@ -13,8 +13,8 @@ class CustomIcon extends StatelessWidget {
     Key? key,
     required this.title,
     required this.icon,
-   this.iconSize = 30,
-     this.textSize = 18,
+    this.iconSize = 30,
+    this.textSize = 18,
   }) : super(key: key);
 
   @override

@@ -9,14 +9,14 @@ class AppBarWidgets extends StatelessWidget {
     Key? key,
     required this.title,
   }) : super(key: key);
-  // AppBar 
+  // AppBar
   final String title;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-         Text(
+        Text(
           title,
           style: const TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
         ),
@@ -28,13 +28,15 @@ class AppBarWidgets extends StatelessWidget {
         ),
         kWidth,
         InkWell(
-          onTap: () {
-            
-          },
+          onTap: () {},
           child: const SizedBox(
             height: 30,
             width: 30,
-            child:   Icon(Icons.person_2, color: kWhiteColor, size: 30,),
+            child: Icon(
+              Icons.person_2,
+              color: kWhiteColor,
+              size: 30,
+            ),
             //color: Colors.red,
           ),
         ),

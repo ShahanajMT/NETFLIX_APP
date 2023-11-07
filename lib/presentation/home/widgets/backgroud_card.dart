@@ -5,9 +5,6 @@ import 'package:netflix_app/presentation/home/widgets/custom_icon.dart';
 import '../../../core/Colors/Colors.dart';
 import '../../../core/constant/constant.dart';
 
-
-
-
 class BackgroudCard extends StatelessWidget {
   const BackgroudCard({
     super.key,
@@ -31,7 +28,7 @@ class BackgroudCard extends StatelessWidget {
                 DecorationImage(image: NetworkImage(kImage), fit: BoxFit.cover),
           ),
         ),
-          const Positioned(
+        const Positioned(
           left: 0,
           right: 0,
           bottom: 10,
@@ -51,8 +48,6 @@ class BackgroudCard extends StatelessWidget {
     );
   }
 }
-
-
 
 class _PlayButton extends StatelessWidget {
   const _PlayButton({

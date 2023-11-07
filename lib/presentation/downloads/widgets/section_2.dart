@@ -22,7 +22,8 @@ class Section2 extends StatelessWidget {
   Widget build(BuildContext context) {
     //!
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      BlocProvider.of<DownloadsBloc>(context).add(const DownloadsEvent.getDownloadsImage());
+      BlocProvider.of<DownloadsBloc>(context)
+          .add(const DownloadsEvent.getDownloadsImage());
     });
     // BlocProvider.of<DownloadsBloc>(context)
     //     .add(const DownloadsEvent.getDownloadsImage());
@@ -54,33 +55,42 @@ class Section2 extends StatelessWidget {
               width: size.width,
               height: size.width,
               //color: Colors.red,
-              child: state.isLoading ? const Center(child: CircularProgressIndicator(strokeWidth: 2,color: Colors.blue,)) : Stack(
-                alignment: Alignment.center,
-                children: [
-                  CircleAvatar(
-                    backgroundColor: Colors.grey.withOpacity(0.5),
-                    radius: size.width * 0.4,
-                  ),
-                  DownloadImageWidget(
-                    imageList: '$imageAppendUrl${state.downloads[0].posterPath}',
-                    margin: const EdgeInsets.only(left: 170, top: 50),
-                    angle: 24,
-                    size: Size(size.width * 0.55, size.width * 0.55),
-                  ),
-                  DownloadImageWidget(
-                    imageList: '$imageAppendUrl${state.downloads[1].posterPath}',
-                    margin: const EdgeInsets.only(right: 170, top: 50),
-                    angle: -24,
-                    size: Size(size.width * 0.55, size.width * 0.55),
-                  ),
-                  DownloadImageWidget(
-                    imageList: '$imageAppendUrl${state.downloads[2].posterPath}',
-                    margin: const EdgeInsets.only(bottom: 35, top: 50),
-                    size: Size(size.width * 0.63, size.width * 0.64),
-                    radius: 8,
-                  ),
-                ],
-              ),
+              child: state.isLoading
+                  ? const Center(
+                      child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      color: Colors.blue,
+                    ))
+                  : Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: Colors.grey.withOpacity(0.5),
+                          radius: size.width * 0.4,
+                        ),
+                        DownloadImageWidget(
+                          imageList:
+                              '$imageAppendUrl${state.downloads[0].posterPath}',
+                          margin: const EdgeInsets.only(left: 170, top: 50),
+                          angle: 24,
+                          size: Size(size.width * 0.55, size.width * 0.55),
+                        ),
+                        DownloadImageWidget(
+                          imageList:
+                              '$imageAppendUrl${state.downloads[1].posterPath}',
+                          margin: const EdgeInsets.only(right: 170, top: 50),
+                          angle: -24,
+                          size: Size(size.width * 0.55, size.width * 0.55),
+                        ),
+                        DownloadImageWidget(
+                          imageList:
+                              '$imageAppendUrl${state.downloads[2].posterPath}',
+                          margin: const EdgeInsets.only(bottom: 35, top: 50),
+                          size: Size(size.width * 0.63, size.width * 0.64),
+                          radius: 8,
+                        ),
+                      ],
+                    ),
             );
           },
         ),

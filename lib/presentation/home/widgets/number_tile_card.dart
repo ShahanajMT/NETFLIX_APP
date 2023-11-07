@@ -19,15 +19,15 @@ class NumberTitleCard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const MainTitleWidget(
-            title: 'Top 10 Tv Shows in India Today'),
+        const MainTitleWidget(title: 'Top 10 Tv Shows in India Today'),
         kHeight,
         LimitedBox(
           maxHeight: screenHeight * 0.29,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemBuilder: (ctx, index) {
-              return NumberCard(index: index,
+              return NumberCard(
+                  index: index,
                   screenHeight: screenHeight,
                   screenWidth: screenWidth);
             },

@@ -22,7 +22,7 @@ class MainTitleCard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-         MainTitleWidget(title: title),
+        MainTitleWidget(title: title),
         kHeight,
         LimitedBox(
           maxHeight: screenHeight * 0.29,

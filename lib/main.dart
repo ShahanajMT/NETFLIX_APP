@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_app/applications/downloads/downloads_bloc.dart';
+import 'package:netflix_app/applications/search/search_bloc.dart';
 import 'package:netflix_app/core/Colors/Colors.dart';
 import 'package:netflix_app/domain/core/di/injectable.dart';
 import 'package:netflix_app/presentation/main_page/main_page.dart';
 
-Future <void> main() async{
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureInjection();
   runApp(const MyApp());
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (ctx) => getIt<DownloadsBloc>())
+        BlocProvider(create: (ctx) => getIt<DownloadsBloc>()),
+        BlocProvider(create: (ctx) => getIt<SearchBloc>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -37,10 +39,8 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home:  MainPage(),
+        home: MainPage(),
       ),
     );
   }
 }
-
-
