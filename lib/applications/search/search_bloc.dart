@@ -24,13 +24,13 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     on<Initialize>((event, emit) async {
       if (state.idleList.isNotEmpty) {
         emit(
-         SearchState(
-          searchResultData: [],
-          idleList: state.idleList,
-          isLoading: false,
-          isError: false,
-        ),
-      );
+          SearchState(
+            searchResultData: [],
+            idleList: state.idleList,
+            isLoading: false,
+            isError: false,
+          ),
+        );
         return;
       }
       //!Emit
@@ -46,14 +46,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       final _result = await _downloadsRepo.getDownloadImage();
       final _state = _result.fold(
         (MainFailure f) {
-          
-            return const SearchState(
-              searchResultData: [],
-              idleList: [],
-              isLoading: false,
-              isError: true,
-            );
-          
+          return const SearchState(
+            searchResultData: [],
+            idleList: [],
+            isLoading: false,
+            isError: true,
+          );
         },
         (List<Downloads> list) {
           return SearchState(
@@ -70,11 +68,41 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     /*
     SEARCH RESULT STATE
     */
-    on<searchMovie>((event, emit) {
+    on<searchMovie>((event, emit) async {
+      //!UI -> Loading CircularProgressIndicator
+      emit(
+        const SearchState(
+          searchResultData: [],
+          idleList: [],
+          isLoading: true,
+          isError: false,
+        ),
+      );
       // Call Search Movie API
-      _searchService.searchMovies(movieQuery: event.movieQuery);
+
+      final _result =
+          await _searchService.searchMovies(movieQuery: event.movieQuery);
+      final _state = _result.fold(
+        (MainFailure f) {
+          return const SearchState(
+            searchResultData: [],
+            idleList: [],
+            isLoading: false,
+            isError: true,
+          );
+        },
+        (SearchResp r) {
+          return SearchState(
+            searchResultData: r.results,
+            idleList: [],
+            isLoading: false,
+            isError: false,
+          );
+        },
+      );
 
       //! Show to UI
+      emit(_state);
     });
   }
 }

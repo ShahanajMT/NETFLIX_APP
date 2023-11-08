@@ -1,9 +1,11 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:netflix_app/core/constant/constant.dart';
 import 'package:netflix_app/presentation/search/widgets/search_title.dart';
 
-const imageUrl =
-    'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/uQxjZGU6rxSPSMeAJPJQlmfV3ys.jpg';
+import '../../../applications/search/search_bloc.dart';
 
 class SearchResultWidget extends StatelessWidget {
   const SearchResultWidget({super.key});
@@ -16,19 +18,24 @@ class SearchResultWidget extends StatelessWidget {
         const SearchTitleText(title: 'Movies & Tv'),
         kHeight,
         Expanded(
-          child: GridView.count(
-            mainAxisSpacing: 8,
-            crossAxisSpacing: 8,
-            childAspectRatio: 1 / 1.3, // Width & Height  setting
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            crossAxisCount: 3,
-            children: List.generate(
-              21,
-              (index) {
-                return const MianCard();
-              },
-            ),
+          child: BlocBuilder<SearchBloc, SearchState>(
+            builder: (context, state) {
+              return GridView.count(
+                mainAxisSpacing: 8,
+                crossAxisSpacing: 8,
+                childAspectRatio: 1 / 1.3, // Width & Height  setting
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                crossAxisCount: 3,
+                children: List.generate(
+                  20,
+                  (index) { 
+                    final movie = state.searchResultData[index];
+                    return  MianCard(imageUrl: movie.posterImageUrl,);
+                  },
+                ),
+              );
+            },
           ),
         ),
       ],
@@ -37,13 +44,17 @@ class SearchResultWidget extends StatelessWidget {
 }
 
 class MianCard extends StatelessWidget {
-  const MianCard({super.key});
+  final String imageUrl;
+  const MianCard({
+    Key? key,
+    required this.imageUrl,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          image: const DecorationImage(
+          image: DecorationImage(
             image: NetworkImage(imageUrl),
             fit: BoxFit.cover,
           ),

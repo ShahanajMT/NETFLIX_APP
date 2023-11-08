@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -14,18 +16,24 @@ class SearchImpl implements SearchService {
       {required String movieQuery}) async {
     // TODO: implement searchMovies
     try {
-      final Response response = await Dio(BaseOptions()).get(
+      final  response = await Dio(BaseOptions()).get(
         ApiEndPoints.search,
         queryParameters: {'query': movieQuery},
       );
+      // log(response.data.toString());
       if (response.statusCode == 200 || response.statusCode == 201) {
         final result = SearchResp.fromJson(response.data);
         return Right(result);
       } else {
         return const Left(MainFailure.serverFailue());
       }
-    } catch (e) {
-      print(e.toString());
+      
+    } on DioException catch(e) {
+       log(e.toString());
+      return const Left(MainFailure.clientFailure());
+    }
+    catch (e) {
+      log(e.toString());
       return const Left(MainFailure.clientFailure());
     }
   }

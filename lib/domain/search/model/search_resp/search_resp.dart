@@ -1,12 +1,14 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:netflix_app/core/constant/constant.dart';
+
+import '../../../../core/constant/constant.dart';
+
 
 part 'search_resp.g.dart';
 
 @JsonSerializable()
 class SearchResp {
   @JsonKey(name: 'results')
-  List<SearchResultData>? results;
+  List<SearchResultData> results;
 
   SearchResp({
     this.results = const [],
@@ -31,7 +33,7 @@ class SearchResultData {
   String? posterPath;
 
   //!toget the complete posterUrl
-  //String get posterImageUrl => '$imageAppendUrl$posterPath';
+  String get posterImageUrl => '$imageAppendUrl$posterPath';
 
   SearchResultData({
     this.id,
