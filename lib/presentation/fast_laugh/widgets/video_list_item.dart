@@ -1,8 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_app/core/constant/constant.dart';
 import 'package:netflix_app/presentation/fast_laugh/widgets/video_action_items.dart';
 
 import '../../../core/Colors/Colors.dart';
+import '../../../domain/downloads/models/downloadsModel.dart';
 import '../screen_fast_laugh.dart';
+
+//! InheritedClass
+class videoListItemInheritedWidget extends InheritedWidget {
+  final Widget widget;
+  final Downloads movieData;
+
+  const videoListItemInheritedWidget({
+    super.key,
+    required this.widget,
+    required this.movieData,
+  }) : super(child: widget);
+
+  @override
+  bool updateShouldNotify(covariant videoListItemInheritedWidget oldWidget) {
+    // TODO: implement updateShouldNotify
+    return oldWidget.movieData != movieData;
+  }
+
+  static videoListItemInheritedWidget? of(BuildContext context) {
+    return context
+        .dependOnInheritedWidgetOfExactType<videoListItemInheritedWidget>();
+  }
+}
 
 class VideoListItem extends StatelessWidget {
   final int index;
@@ -13,6 +38,8 @@ class VideoListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //profileImage
+    final posterPath = videoListItemInheritedWidget.of(context)?.movieData.posterPath;
     return Stack(
       children: [
         Container(
@@ -40,15 +67,15 @@ class VideoListItem extends StatelessWidget {
                 ),
 
                 //! RIGHT SIDE
-                const Column(
+                 Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         vertical: 10,
                       ),
                       child: CircleAvatar(
-                        backgroundImage: NetworkImage(imageUrl),
+                        backgroundImage: posterPath == null ? null : NetworkImage('$imageAppendUrl$posterPath'),
                         radius: 30,
                       ),
                     ),
