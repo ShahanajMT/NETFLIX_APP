@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_app/applications/fast_laugh/fast_laugh_bloc.dart';
 
 import 'package:netflix_app/core/constant/constant.dart';
@@ -85,19 +86,45 @@ class VideoListItem extends StatelessWidget {
                         radius: 30,
                       ),
                     ),
-                    VideoActionWidget(icon: Icons.emoji_emotions, title: 'LOL'),
-                    VideoActionWidget(icon: Icons.add, title: 'My List'),
+                    ValueListenableBuilder(
+                      valueListenable: likedVideoIdsNotifier,
+                      builder: (BuildContext c, Set<int> newLikedListIds, Widget? _) {
+                        final _index = index;
+                        if (newLikedListIds.contains(_index)) {
+                          return GestureDetector(
+                            onTap: () {
+                              BlocProvider.of<FastLaughBloc>(context).add(UnLikeVideo(id: _index));
+                            },
+                            child: const VideoActionWidget(
+                                icon: Icons.favorite_outline,iconColor: Colors.red, title: 'Liked'),
+                          );
+                        } else {
+                          return GestureDetector(
+                            onTap: () {
+                              BlocProvider.of<FastLaughBloc>(context).add(LikeVideo(id: _index));
+                            },
+                            child: const VideoActionWidget(
+                                icon: Icons.emoji_emotions, iconColor: kWhiteColor, title: 'LOL'),
+                          );
+                        }
+                      },
+                    ),
+                    const VideoActionWidget(icon: Icons.add, iconColor: kWhiteColor,title: 'My List'),
                     GestureDetector(
                       onTap: () {
-                        final movieName = videoListItemInheritedWidget.of(context)?.movieData.title;
+                        final movieName = videoListItemInheritedWidget
+                            .of(context)
+                            ?.movieData
+                            .title;
                         if (movieName != null) {
                           Share.share(movieName);
                         }
                       },
-                      child:
-                          VideoActionWidget(icon: Icons.share, title: 'Share'),
+                      child: const VideoActionWidget(
+                          icon: Icons.share, iconColor: kWhiteColor,title: 'Share'),
                     ),
-                    VideoActionWidget(icon: Icons.play_arrow, title: 'Play'),
+                    const VideoActionWidget(
+                        icon: Icons.play_arrow,iconColor: kWhiteColor, title: 'Play'),
                   ],
                 ),
               ],
