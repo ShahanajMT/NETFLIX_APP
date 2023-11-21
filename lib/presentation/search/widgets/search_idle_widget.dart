@@ -8,8 +8,6 @@ import 'package:netflix_app/core/constant/constant.dart';
 import '../../../applications/search/search_bloc.dart';
 import 'search_title.dart';
 
-
-
 class SearchIdleWidget extends StatelessWidget {
   const SearchIdleWidget({super.key});
 
@@ -28,17 +26,25 @@ class SearchIdleWidget extends StatelessWidget {
             builder: (context, state) {
               //!Checking whether Data is getting
               if (state.isLoading) {
-                return const Center(child: CircularProgressIndicator(),);
-              } else if(state.isError) {
-                return const Center(child: Text('Error while getting Data'),);
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state.isError) {
+                return const Center(
+                  child: Text('Error while getting Data'),
+                );
               } else if (state.idleList.isEmpty) {
-                return const Center(child: Text('Idle List is empty'),);
+                return const Center(
+                  child: Text('Idle List is empty'),
+                );
               }
               return ListView.separated(
                   shrinkWrap: true,
                   itemBuilder: (ctx, index) {
                     final movie = state.idleList[index];
-                    return TopSearchItemTile(titie: movie.title ?? 'No Title Provider', imageUrl: '$imageAppendUrl${movie.posterPath}');
+                    return TopSearchItemTile(
+                        titie: movie.title ?? 'No Title Provider',
+                        imageUrl: '$imageAppendUrl${movie.posterPath}');
                   },
                   separatorBuilder: (ctx, index) => kHeight20,
                   itemCount: state.idleList.length);
@@ -69,7 +75,7 @@ class TopSearchItemTile extends StatelessWidget {
           height: 65,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
-            image:  DecorationImage(
+            image: DecorationImage(
               fit: BoxFit.cover,
               image: NetworkImage(imageUrl),
             ),
@@ -77,7 +83,7 @@ class TopSearchItemTile extends StatelessWidget {
           //color: Colors.red,
         ),
         kWidth,
-         Expanded(
+        Expanded(
           child: Text(
             titie,
             style: const TextStyle(

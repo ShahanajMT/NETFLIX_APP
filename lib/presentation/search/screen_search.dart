@@ -9,7 +9,7 @@ import 'package:netflix_app/presentation/search/widgets/search_result.dart';
 import 'widgets/search_idle_widget.dart';
 
 class ScreenSearch extends StatelessWidget {
-   ScreenSearch({super.key});
+  ScreenSearch({super.key});
 
   final _debouncer = Debouncer(delay: const Duration(milliseconds: 1 * 1000));
 
@@ -43,14 +43,13 @@ class ScreenSearch extends StatelessWidget {
                       return;
                     }
                     _debouncer.run(() {
-                       BlocProvider.of<SearchBloc>(context)
-                        .add(searchMovie(movieQuery: value));
-                     });
-                   
+                      BlocProvider.of<SearchBloc>(context)
+                          .add(searchMovie(movieQuery: value));
+                    });
                   },
                 ),
                 kHeight,
-                 Expanded(
+                Expanded(
                   child: BlocBuilder<SearchBloc, SearchState>(
                     builder: (context, state) {
                       if (state.searchResultData.isEmpty) {
@@ -58,7 +57,6 @@ class ScreenSearch extends StatelessWidget {
                       } else {
                         return const SearchResultWidget();
                       }
-                      
                     },
                   ),
                 ),

@@ -1,13 +1,22 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import '../../../core/Colors/Colors.dart';
 import '../../../core/constant/constant.dart';
 import '../../home/widgets/custom_icon.dart';
 import 'videoWidget.dart';
 
 class EveryonesWatchingWidget extends StatelessWidget {
+  // Data we needed
+  final String posterPath;
+  final String movieName;
+  final String description;
   const EveryonesWatchingWidget({
-    super.key,
-  });
+    Key? key,
+    required this.posterPath,
+    required this.movieName,
+    required this.description,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +35,7 @@ class EveryonesWatchingWidget extends StatelessWidget {
           ),
         ),
         kHeight50,
-        VideoWidget(),
+        VideoWidget(url: newandHotTempImage2,),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [

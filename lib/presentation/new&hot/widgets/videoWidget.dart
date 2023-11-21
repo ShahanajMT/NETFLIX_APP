@@ -1,13 +1,16 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 //! POSTERS WIDGET
 import 'package:flutter/material.dart';
 
 import '../../../core/Colors/Colors.dart';
-import '../../../core/constant/constant.dart';
+
 
 class VideoWidget extends StatelessWidget {
+  final String url;
   const VideoWidget({
-    super.key,
-  });
+    Key? key,
+    required this.url,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +21,10 @@ class VideoWidget extends StatelessWidget {
           height: size.height * 0.25,
           width: size.width * 1,
           child: Image.network(
-            newandHotTempImage,
+            url, 
             fit: BoxFit.cover,
           ),
+          
         ),
         Positioned(
           bottom: 10,

@@ -1,14 +1,29 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import '../../../core/Colors/Colors.dart';
 import '../../../core/constant/constant.dart';
 import '../../home/widgets/custom_icon.dart';
 import 'videoWidget.dart';
 
 class ComingSoonWidget extends StatelessWidget {
+  //Data we needed
+  final String id;
+  final String month;
+  final String day;
+  final String posterPath;
+  final String movieName;
+  final String description;
   const ComingSoonWidget({
-    super.key,
-  });
+    Key? key,
+    required this.id,
+    required this.month,
+    required this.day,
+    required this.posterPath,
+    required this.movieName,
+    required this.description,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -24,14 +39,14 @@ class ComingSoonWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                "FEB",
+                month,
                 style: GoogleFonts.montserrat(
                   color: kGreyColor.withOpacity(0.83),
                   fontSize: 17,
                 ),
               ),
               Text(
-                "11",
+                day,
                 style: GoogleFonts.montserrat(
                   color: kWhiteColor.withOpacity(0.83),
                   fontSize: 25,
@@ -52,46 +67,50 @@ class ComingSoonWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               //! For Posters
-              const VideoWidget(),
+               VideoWidget(url: posterPath,),
               //! TitleText
               Row(
                 children: [
-                  Text(
-                    "Tall Girl 2",
-                    style: GoogleFonts.montserrat(
-                        fontSize: 35, fontWeight: FontWeight.bold),
+                  Expanded(
+                    child: Text(
+                      movieName,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.montserrat(
+                        fontSize: 35,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
-                  const Spacer(),
-                  const Row(
-                    children: [
-                      CustomIcon(
-                        title: "Remind Me",
-                        icon: Icons.notifications_active,
-                        iconSize: 22,
-                        textSize: 16,
-                      ),
-                      kWidth,
-                      CustomIcon(
-                        title: "Info",
-                        icon: Icons.info,
-                        iconSize: 22,
-                        textSize: 16,
-                      ),
-                    ],
+                  //const Spacer(),
+                  const CustomIcon(
+                    title: "Remind Me",
+                    icon: Icons.notifications_active,
+                    iconSize: 22,
+                    textSize: 16,
+                  ),
+                  kWidth,
+                  const CustomIcon(
+                    title: "Info",
+                    icon: Icons.info,
+                    iconSize: 22,
+                    textSize: 16,
                   ),
                 ],
               ),
               kHeight,
-              const Text('Coming on Friday'),
+              Text('Coming on $day $month'),
               kHeight,
-              const Text(
-                "Tall Girl 2",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              Text(
+                movieName,
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               kHeight,
-              const Text(
-                "Landing the lead in the school musical is a dream come to for jodi, until the presure sends her confidence - and her relationships - into a tailspin.",
-                style: TextStyle(
+              Text(
+                description,
+                maxLines: 4,
+                style: const TextStyle(
                   color: kGreyColor,
                 ),
               )

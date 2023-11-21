@@ -29,9 +29,11 @@ class SearchResultWidget extends StatelessWidget {
                 crossAxisCount: 3,
                 children: List.generate(
                   20,
-                  (index) { 
+                  (index) {
                     final movie = state.searchResultData[index];
-                    return  MianCard(imageUrl: movie.posterImageUrl,);
+                    return MianCard(
+                      imageUrl: movie.posterImageUrl,
+                    );
                   },
                 ),
               );

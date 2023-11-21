@@ -5,6 +5,4 @@ class FastLaughEvent with _$FastLaughEvent {
   const factory FastLaughEvent.initialize() = Initialize;
   const factory FastLaughEvent.likeVideo({required int id}) = LikeVideo;
   const factory FastLaughEvent.unLikeVideo({required int id}) = UnLikeVideo;
-  
-  
 }

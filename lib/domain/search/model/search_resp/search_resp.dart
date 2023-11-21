@@ -2,7 +2,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 import '../../../../core/constant/constant.dart';
 
-
 part 'search_resp.g.dart';
 
 @JsonSerializable()

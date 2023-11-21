@@ -88,28 +88,38 @@ class VideoListItem extends StatelessWidget {
                     ),
                     ValueListenableBuilder(
                       valueListenable: likedVideoIdsNotifier,
-                      builder: (BuildContext c, Set<int> newLikedListIds, Widget? _) {
+                      builder: (BuildContext c, Set<int> newLikedListIds,
+                          Widget? _) {
                         final _index = index;
                         if (newLikedListIds.contains(_index)) {
                           return GestureDetector(
                             onTap: () {
-                              BlocProvider.of<FastLaughBloc>(context).add(UnLikeVideo(id: _index));
+                              BlocProvider.of<FastLaughBloc>(context)
+                                  .add(UnLikeVideo(id: _index));
                             },
                             child: const VideoActionWidget(
-                                icon: Icons.favorite_outline,iconColor: Colors.red, title: 'Liked'),
+                                icon: Icons.favorite_outline,
+                                iconColor: Colors.red,
+                                title: 'Liked'),
                           );
                         } else {
                           return GestureDetector(
                             onTap: () {
-                              BlocProvider.of<FastLaughBloc>(context).add(LikeVideo(id: _index));
+                              BlocProvider.of<FastLaughBloc>(context)
+                                  .add(LikeVideo(id: _index));
                             },
                             child: const VideoActionWidget(
-                                icon: Icons.emoji_emotions, iconColor: kWhiteColor, title: 'LOL'),
+                                icon: Icons.emoji_emotions,
+                                iconColor: kWhiteColor,
+                                title: 'LOL'),
                           );
                         }
                       },
                     ),
-                    const VideoActionWidget(icon: Icons.add, iconColor: kWhiteColor,title: 'My List'),
+                    const VideoActionWidget(
+                        icon: Icons.add,
+                        iconColor: kWhiteColor,
+                        title: 'My List'),
                     GestureDetector(
                       onTap: () {
                         final movieName = videoListItemInheritedWidget
@@ -121,10 +131,14 @@ class VideoListItem extends StatelessWidget {
                         }
                       },
                       child: const VideoActionWidget(
-                          icon: Icons.share, iconColor: kWhiteColor,title: 'Share'),
+                          icon: Icons.share,
+                          iconColor: kWhiteColor,
+                          title: 'Share'),
                     ),
                     const VideoActionWidget(
-                        icon: Icons.play_arrow,iconColor: kWhiteColor, title: 'Play'),
+                        icon: Icons.play_arrow,
+                        iconColor: kWhiteColor,
+                        title: 'Play'),
                   ],
                 ),
               ],

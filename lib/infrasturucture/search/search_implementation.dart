@@ -16,7 +16,7 @@ class SearchImpl implements SearchService {
       {required String movieQuery}) async {
     // TODO: implement searchMovies
     try {
-      final  response = await Dio(BaseOptions()).get(
+      final response = await Dio(BaseOptions()).get(
         ApiEndPoints.search,
         queryParameters: {'query': movieQuery},
       );
@@ -27,12 +27,10 @@ class SearchImpl implements SearchService {
       } else {
         return const Left(MainFailure.serverFailue());
       }
-      
-    } on DioException catch(e) {
-       log(e.toString());
+    } on DioException catch (e) {
+      log(e.toString());
       return const Left(MainFailure.clientFailure());
-    }
-    catch (e) {
+    } catch (e) {
       log(e.toString());
       return const Left(MainFailure.clientFailure());
     }
