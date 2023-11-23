@@ -3,11 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_app/applications/downloads/downloads_bloc.dart';
 import 'package:netflix_app/applications/fast_laugh/fast_laugh_bloc.dart';
+
 import 'package:netflix_app/applications/hotAndNew/hotandnew_bloc.dart';
 import 'package:netflix_app/applications/search/search_bloc.dart';
 import 'package:netflix_app/core/Colors/Colors.dart';
 import 'package:netflix_app/domain/core/di/injectable.dart';
 import 'package:netflix_app/presentation/main_page/main_page.dart';
+
+import 'applications/bloc/home_bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,6 +30,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (ctx) => getIt<SearchBloc>()),
         BlocProvider(create: (ctx) => getIt<FastLaughBloc>()),
         BlocProvider(create: (ctx) => getIt<HotandnewBloc>()),
+        BlocProvider(create: (ctx) => getIt<HomeBloc>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -1,14 +1,17 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 import '../../../core/constant/constant.dart';
-import '../screen_home.dart';
 
 class MianHomeCard extends StatelessWidget {
+  final String imageUrl;
+
   const MianHomeCard({
-    super.key,
+    Key? key,
+    required this.imageUrl,
     required this.screenHeight,
     required this.screenWidth,
-  });
+  }) : super(key: key);
 
   final double screenHeight;
   final double screenWidth;
@@ -21,7 +24,7 @@ class MianHomeCard extends StatelessWidget {
       //color: Colors.red,
       decoration: BoxDecoration(
         borderRadius: kRadius8,
-        image: const DecorationImage(
+        image: DecorationImage(
           fit: BoxFit.cover,
           image: NetworkImage(imageUrl),
         ),

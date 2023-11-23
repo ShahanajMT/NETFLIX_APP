@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_app/core/Colors/Colors.dart';
 
 import '../../../core/constant/constant.dart';
-import '../screen_home.dart';
 
 class NumberCard extends StatelessWidget {
   final double screenHeight;
@@ -36,7 +35,8 @@ class NumberCard extends StatelessWidget {
                 borderRadius: kRadius8,
                 image: const DecorationImage(
                   fit: BoxFit.cover,
-                  image: NetworkImage(imageUrl),
+                  image: NetworkImage(
+                      'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/bkpPTZUdq31UGDovmszsg2CchiI.jpg'),
                 ),
               ),
             ),

@@ -1,16 +1,20 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:netflix_app/presentation/home/widgets/custom_icon.dart';
 
 import '../../../core/Colors/Colors.dart';
 import '../../../core/constant/constant.dart';
 
 class BackgroudCard extends StatelessWidget {
+  //final String backgroundImage;
   const BackgroudCard({
-    super.key,
+    Key? key,
+    //required this.backgroundImage,
     required this.screenHeight,
     required this.screenWidth,
-  });
+  }) : super(key: key);
 
   final double screenHeight;
   final double screenWidth;
