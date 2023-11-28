@@ -2,6 +2,7 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:netflix_app/core/Colors/Colors.dart';
 
 import '../../../core/constant/constant.dart';
@@ -10,11 +11,13 @@ class NumberCard extends StatelessWidget {
   final double screenHeight;
   final double screenWidth;
   final int index;
+  final String imageUrl;
   const NumberCard({
     Key? key,
     required this.screenHeight,
     required this.screenWidth,
     required this.index,
+    required this.imageUrl,
   }) : super(key: key);
 
   @override
@@ -33,10 +36,10 @@ class NumberCard extends StatelessWidget {
               //color: Colors.red,
               decoration: BoxDecoration(
                 borderRadius: kRadius8,
-                image: const DecorationImage(
+                image:  DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(
-                      'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/bkpPTZUdq31UGDovmszsg2CchiI.jpg'),
+                      imageUrl,),
                 ),
               ),
             ),
