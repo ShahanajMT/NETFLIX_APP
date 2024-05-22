@@ -8,5 +8,5 @@ final getIt = GetIt.instance;
 @InjectableInit()
 Future<void> configureInjection() async {
   // This method call to main file
-  await $initGetIt(getIt, environment: Environment.prod);
+  $initGetIt(getIt, environment: Environment.prod);
 }

@@ -134,8 +134,8 @@ class ComingSoonList extends StatelessWidget {
                 String month = '';
                 String date = '';
                 try {
-                  final _date = DateTime.tryParse(movie.releaseDate!);
-                  final formatedDate = DateFormat.yMMMMd('en_US').format(_date!);
+                  final date0 = DateTime.tryParse(movie.releaseDate!);
+                  final formatedDate = DateFormat.yMMMMd('en_US').format(date0!);
                   print(formatedDate.toString());
                   month =
                       formatedDate.split(' ').first.substring(0, 3).toUpperCase();

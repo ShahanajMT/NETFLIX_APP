@@ -9,7 +9,7 @@ import '../new&hot/screen_new_hot.dart';
 import '../search/screen_search.dart';
 
 class MainPage extends StatelessWidget {
-  MainPage({super.key});
+   MainPage({super.key});
 
   //! List of pages
   final _pages = [

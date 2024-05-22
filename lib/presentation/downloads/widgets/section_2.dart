@@ -8,7 +8,7 @@ import '../../../core/Colors/Colors.dart';
 import '../../../core/constant/constant.dart';
 
 class Section2 extends StatelessWidget {
-  Section2({super.key});
+  const Section2({super.key});
 
   // //! List of Posters
 

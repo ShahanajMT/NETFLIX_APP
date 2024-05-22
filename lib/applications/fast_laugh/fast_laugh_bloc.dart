@@ -39,8 +39,8 @@ class FastLaughBloc extends Bloc<FastLaughEvent, FastLaughState> {
       );
       // get trending movies
 
-      final _result = await _downloadService.getDownloadImage();
-      final _state = _result.fold(
+      final result = await _downloadService.getDownloadImage();
+      final state = result.fold(
         (f) {
           return const FastLaughState(
             videoList: [],
@@ -58,7 +58,7 @@ class FastLaughBloc extends Bloc<FastLaughEvent, FastLaughState> {
       );
 
       // send to UI
-      emit(_state);
+      emit(state);
     });
 
     //like and unLike

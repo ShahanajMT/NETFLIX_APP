@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:math';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,6 +23,7 @@ class ScreenHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   
     WidgetsBinding.instance.addPostFrameCallback((_) {
       BlocProvider.of<HomeBloc>(context).add(const GetHomeScreenData());
     });
@@ -63,21 +63,21 @@ class ScreenHome extends StatelessWidget {
                           );
                         } else {
                           //releasePastYear
-                          final _releasePastYear =
+                          final releasePastYear =
                               state.pastYearMovieList.map((m) {
                             return '$imageAppendUrl${m.posterPath}';
                           }).toList();
-                          _releasePastYear.shuffle();
+                          releasePastYear.shuffle();
 
                           //trending
-                          final _trending = state.trendingMovieList.map((m) {
+                          final trending = state.trendingMovieList.map((m) {
                             return '$imageAppendUrl${m.posterPath}';
                           }).toList();
                           //_trending.shuffle();
 
                           //tenseDramas
 
-                          final _tenseDramas =
+                          final tenseDramas =
                               state.tensDaramasMovieList.map((m) {
                             return '$imageAppendUrl${m.posterPath}';
                           }).toList();
@@ -85,68 +85,69 @@ class ScreenHome extends StatelessWidget {
 
                           //southIndian
 
-                          final _southIndian =
+                          final southIndian =
                               state.southIndianMovieList.map((m) {
                             return '$imageAppendUrl${m.posterPath}';
                           }).toList();
-                          _southIndian.shuffle();
+                          southIndian.shuffle();
 
                           //top10 tv shows
-                          final _top10TvShows = state.trendingTvList.map((t) {
+                          final top10TvShows = state.trendingTvList.map((t) {
                             return '$imageAppendUrl${t.posterPath}';
                           }).toList();
-                           _top10TvShows.shuffle();
+                           top10TvShows.shuffle();
 
                           return ListView(
                             //shrinkWrap: true,
                             children: [
                               BackgroudCard(
+                               
                                 screenHeight: screenHeight,
                                 screenWidth: screenWidth,
                               ),
                               kHeight,
                               MainTitleCard(
                                 title: 'Released in the past year',
-                                posterList: _releasePastYear.sublist(0, 10),
+                                posterList: releasePastYear.sublist(0, 10),
                                 //posterList: _releasePastYear.sublist(0, min(10, _releasePastYear.length)),
-
+                          
                                 screenHeight: screenHeight,
                                 screenWidth: screenWidth,
                               ),
                               kHeight,
                               MainTitleCard(
                                 title: 'Trending Now',
-                                posterList: _trending.sublist(0, 10),
+                                posterList: trending.sublist(0, 10),
                                 //posterList: _releasePastYear.sublist(0, min(10, _trending.length)),
-
+                          
                                 screenHeight: screenHeight,
                                 screenWidth: screenWidth,
                               ),
                               kHeight,
                               //! NUMBER CARD
                               NumberTitleCard(
-                                postersList: _top10TvShows.sublist(0, 10),
+                                postersList: top10TvShows.sublist(0, 10),
                                 screenHeight: screenHeight,
                                 screenWidth: screenWidth,
                               ),
                               kHeight,
-
+                          
                               //! END
                               MainTitleCard(
                                 title: 'Tense Dramas',
                                 //posterList: _tenseDramas.sublist(0, 10),
-                                posterList: _releasePastYear.sublist(
-                                    0, min(10, _tenseDramas.length)),
-
+                                posterList: releasePastYear.sublist(
+                                    0, min(10, tenseDramas.length)),
+                          
                                 screenHeight: screenHeight,
                                 screenWidth: screenWidth,
                               ),
                               kHeight,
                               MainTitleCard(
                                 title: 'South Indian Cinemas',
-                                posterList: _southIndian.sublist(0, 10),
+                                posterList: southIndian.sublist(0, 10),
                                 //posterList: _releasePastYear.sublist(0, min(10, _southIndian.length)),
-
+                          
                                 screenHeight: screenHeight,
                                 screenWidth: screenWidth,
                               )

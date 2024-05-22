@@ -20,14 +20,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       emit(state.copyWith(isLoading: true, hasError: false));
 
       // get Data
-      final _movieResult = await _homeService.getHotAndNewMovieData();
-      final _tvResult = await _homeService.getHotAndNewTvData();
+      final movieResult = await _homeService.getHotAndNewMovieData();
+      final tvResult = await _homeService.getHotAndNewTvData();
 
       // transform Data
 
-      final _state1 = _movieResult.fold(
+      final state1 = movieResult.fold(
         (MainFailure failure) {
-          return  HomeState(
+          return HomeState(
             stateId: DateTime.now().microsecondsSinceEpoch.toString(),
             pastYearMovieList: [],
             trendingMovieList: [],
@@ -37,7 +37,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             isLoading: false,
             hasError: true,
           );
-        }, 
+        },
         (HotAndNewResp resp) {
           // to shufle the movie -> List
           final pastYear = resp.results;
@@ -48,7 +48,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           trending.shuffle();
           tensDramas.shuffle();
           southIndian.shuffle();
-          return  HomeState(
+          return HomeState(
             stateId: DateTime.now().microsecondsSinceEpoch.toString(),
             pastYearMovieList: pastYear,
             trendingMovieList: trending,
@@ -60,12 +60,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           );
         },
       );
-      emit(_state1);
+      emit(state1);
 
-
-      final _state2 = _tvResult.fold(
+      final state2 = tvResult.fold(
         (MainFailure failure) {
-          return  HomeState(
+          return HomeState(
             stateId: DateTime.now().microsecondsSinceEpoch.toString(),
             pastYearMovieList: [],
             trendingMovieList: [],
@@ -78,7 +77,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         },
         (HotAndNewResp resp) {
           final top10List = resp.results;
-          return  HomeState(
+          return HomeState(
             stateId: DateTime.now().microsecondsSinceEpoch.toString(),
             pastYearMovieList: state.pastYearMovieList,
             trendingMovieList: state.trendingMovieList,
@@ -92,7 +91,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       );
 
       // send to UI
-      emit(_state2);
+      emit(state2);
     });
   }
 }

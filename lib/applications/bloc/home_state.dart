@@ -9,6 +9,7 @@ class HomeState with _$HomeState {
     required List<HotAndNewData> tensDaramasMovieList,
     required List<HotAndNewData> southIndianMovieList,
     required List<HotAndNewData> trendingTvList,
+    
     required bool isLoading,
     required bool hasError,
   }) = _Initial;
@@ -19,6 +20,7 @@ class HomeState with _$HomeState {
         trendingMovieList: [],
         tensDaramasMovieList: [],
         southIndianMovieList: [],
+       
         trendingTvList: [],
         isLoading: false,
         hasError: false,

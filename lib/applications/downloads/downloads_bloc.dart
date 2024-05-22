@@ -13,6 +13,7 @@ part 'downloads_event.dart';
 part 'downloads_state.dart';
 part 'downloads_bloc.freezed.dart';
 
+
 @injectable
 class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
   final IDownloadsRepo _downloadsRepo;

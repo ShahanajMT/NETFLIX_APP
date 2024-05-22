@@ -26,8 +26,9 @@ class BackgroudCard extends StatelessWidget {
         Container(
           height: screenHeight * 0.87,
           width: screenWidth * 1,
-          //color: Colors.yellow,
+          
           decoration: const BoxDecoration(
+            //color: Colors.yellow,
             image:
                 DecorationImage(image: NetworkImage(kImage), fit: BoxFit.cover),
           ),
@@ -54,9 +55,7 @@ class BackgroudCard extends StatelessWidget {
 }
 
 class _PlayButton extends StatelessWidget {
-  const _PlayButton({
-    super.key,
-  });
+  const _PlayButton();
 
   @override
   Widget build(BuildContext context) {

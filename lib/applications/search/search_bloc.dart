@@ -21,50 +21,92 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     /*
     IDLE STATE
     */
+    // on<Initialize>((event, emit) async {
+    //   if (state.idleList.isNotEmpty) {
+    //     emit(
+    //       SearchState(
+    //         searchResultData: [],
+    //         idleList: state.idleList,
+    //         isLoading: false,
+    //         isError: false,
+    //       ),
+    //     );
+    //     return;
+    //   }
+    //   //!Emit
+    //   emit(
+    //     const SearchState(
+    //       searchResultData: [],
+    //       idleList: [],
+    //       isLoading: true,
+    //       isError: false,
+    //     ),
+    //   );
+    //   // Get Trending
+    //   final result = await _downloadsRepo.getDownloadImage();
+    //   final state = result.fold(
+    //     (MainFailure f) {
+    //       return const SearchState(
+    //         searchResultData: [],
+    //         idleList: [],
+    //         isLoading: false,
+    //         isError: true,
+    //       );
+    //     },
+    //     (List<Downloads> list) {
+    //       return SearchState(
+    //         searchResultData: [],
+    //         idleList: list,
+    //         isLoading: false,
+    //         isError: false,
+    //       );
+    //     },
+    //   );
+    //   //!Show to UI
+    //   emit(state);
+    // });
+
     on<Initialize>((event, emit) async {
-      if (state.idleList.isNotEmpty) {
-        emit(
-          SearchState(
-            searchResultData: [],
-            idleList: state.idleList,
-            isLoading: false,
-            isError: false,
-          ),
-        );
-        return;
-      }
-      //!Emit
-      emit(
-        const SearchState(
-          searchResultData: [],
-          idleList: [],
-          isLoading: true,
-          isError: false,
-        ),
-      );
-      // Get Trending
-      final _result = await _downloadsRepo.getDownloadImage();
-      final _state = _result.fold(
-        (MainFailure f) {
-          return const SearchState(
-            searchResultData: [],
-            idleList: [],
-            isLoading: false,
-            isError: true,
-          );
-        },
-        (List<Downloads> list) {
-          return SearchState(
-            searchResultData: [],
-            idleList: list,
-            isLoading: false,
-            isError: false,
-          );
-        },
-      );
-      //!Show to UI
-      emit(_state);
-    });
+  if (state.idleList.isNotEmpty) {
+    emit(
+      SearchState(
+        searchResultData: [],
+        idleList: state.idleList,
+        isLoading: false,
+        isError: false,
+      ),
+    );
+    return;
+  }
+  //!Emit
+  emit(
+    const SearchState(
+      searchResultData: [],
+      idleList: [],
+      isLoading: true,
+      isError: false,
+    ),
+  );
+  // Get Trending
+  final result = await _downloadsRepo.getDownloadImage();
+  // Directly emit state based on result
+  emit(
+    result.fold(
+      (MainFailure f) => const SearchState(
+        searchResultData: [],
+        idleList: [],
+        isLoading: false,
+        isError: true,
+      ),
+      (List<Downloads> list) => SearchState(
+        searchResultData: [],
+        idleList: list,
+        isLoading: false,
+        isError: false,
+      ),
+    ),
+  );
+});
     /*
     SEARCH RESULT STATE
     */
@@ -80,9 +122,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       );
       // Call Search Movie API
 
-      final _result =
+      final result =
           await _searchService.searchMovies(movieQuery: event.movieQuery);
-      final _state = _result.fold(
+      final state = result.fold(
         (MainFailure f) {
           return const SearchState(
             searchResultData: [],
@@ -102,7 +144,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       );
 
       //! Show to UI
-      emit(_state);
+      emit(state);
     });
   }
 }
